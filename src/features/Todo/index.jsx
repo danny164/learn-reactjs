@@ -1,7 +1,6 @@
 // Todo 1. Type: rfcp
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import TodoList from './components/TodoList';
 
 // ! TodoFeature: Parent Container contains the value (a todoList Array)
