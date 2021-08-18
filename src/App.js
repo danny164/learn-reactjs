@@ -1,3 +1,4 @@
+import CounterFeature from 'features/Counter';
 import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import productApi from './api/productApi';
@@ -22,8 +23,12 @@ function App() {
         <div className="App">
             <Header />
 
+            <Route path="/" component={CounterFeature} />
+
             <Route path="/todos" component={TodoFeature} />
             <Route path="/albums" component={AlbumFeature} />
+
+            {/* <Debounce /> */}
 
             {/* <TodoFeature />
             <AlbumFeature /> */}
