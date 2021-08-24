@@ -21,9 +21,11 @@ function TodoForm(props) {
     };
 
     return (
-        <form onSubmit={form.handleSubmit(handleSubmit)}>
-            <InputField name="title" label="Todo" form={form} />
-        </form>
+        <>
+            <form onSubmit={form.handleSubmit(handleSubmit)}>
+                <InputField name="title" label="Todo Form" form={form} />
+            </form>
+        </>
     );
 }
 

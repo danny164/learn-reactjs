@@ -12,9 +12,6 @@ InputField.propTypes = {
 };
 
 InputField.defaultProps = {
-    form: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-
     label: '',
     disable: false,
 };
