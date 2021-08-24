@@ -11,6 +11,14 @@ InputField.propTypes = {
     disable: PropTypes.bool,
 };
 
+InputField.defaultProps = {
+    form: PropTypes.object.isRequired,
+    name: PropTypes.string.isRequired,
+
+    label: '',
+    disable: false,
+};
+
 function InputField(props) {
     const { form, name, label, disable } = props;
     const { control } = form;
