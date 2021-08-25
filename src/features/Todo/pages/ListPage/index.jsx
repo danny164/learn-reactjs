@@ -1,6 +1,7 @@
 // Type: rfcp
 
 import React, { useState } from 'react';
+import TodoForm from '../../components/TodoForm';
 import TodoList from '../../components/TodoList';
 
 //  ! TodoFeature: Parent Container contains the value (a todoList Array)
@@ -98,8 +99,26 @@ function ListPage(props) {
     // * And the function will be callback after each click
     // * Add `onTodoClick={handleTodoClick}` and go to 2.1 in TodoList component
     //////////////////////////////////////
+
+    const handleTodoFormSubmit = (values) => {
+        console.log('Form submit', values);
+
+        const newTodo = {
+            id: todoList.length + 1,
+            title: values.title,
+            status: 'new',
+        };
+
+        const newTodoList = [...todoList, newTodo];
+
+        setTodoList(newTodoList);
+    };
+
     return (
         <div>
+            <h3>Todo Form</h3>
+            <TodoForm onSubmit={handleTodoFormSubmit} />
+
             <h3>Todo List</h3>
             <TodoList todoList={todoList} onTodoClick={handleTodoClick} />
         </div>
