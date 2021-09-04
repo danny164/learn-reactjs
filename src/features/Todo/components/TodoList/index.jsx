@@ -33,39 +33,41 @@ function TodoList(props) {
 
     //////////////////////////////////////
     return (
-        <ul className="todo-list">
-            {
-                //  traverse the array todoList via . map
-                //  for each todo, create a JSX use the parathesis ()
-                //////////////////////////////////////
-                //  TODO 1.1 todoLis.map((todo)) => {}
-                //  * <li key={todo.id}>{todo.title}</li>
-                //////////////////////////////////////
-                //  TODO 1.2 npm i --save classnames
-                //  * pass inside classnames will be an object
-                //////////////////////////////////////
-                //  * onClick={}
-                //  TODO 2.4 for each click, pls help me call handleTodoClick function
-                //  * with 2 params todo and index
-                //  * onClick={() => handleTodoClick(todo, index)}
-                //////////////////////////////////////
-                //  Khi mà cái li được click á mình sẽ làm cái gì đây?
-                //  À mình sẽ gọi cái hàm handleTodoClick này
-                //  Sau đó, mình sẽ truyền vào thứ 1 là cái todo, thứ 2 là cái index
-                todoList.map((todo, index) => (
-                    <li
-                        key={todo.id}
-                        className={classnames({
-                            'todo-item': true,
-                            completed: todo.status === 'completed',
-                        })}
-                        onClick={() => handleTodoClick(todo, index)}
-                    >
-                        {todo.title}
-                    </li>
-                ))
-            }
-        </ul>
+        <>
+            <ul className="todo-list">
+                {
+                    //  traverse the array todoList via . map
+                    //  for each todo, create a JSX use the parathesis ()
+                    //////////////////////////////////////
+                    //  TODO 1.1 todoLis.map((todo)) => {}
+                    //  * <li key={todo.id}>{todo.title}</li>
+                    //////////////////////////////////////
+                    //  TODO 1.2 npm i --save classnames
+                    //  * pass inside classnames will be an object
+                    //////////////////////////////////////
+                    //  * onClick={}
+                    //  TODO 2.4 for each click, pls help me call handleTodoClick function
+                    //  * with 2 params todo and index
+                    //  * onClick={() => handleTodoClick(todo, index)}
+                    //////////////////////////////////////
+                    //  Khi mà cái li được click á mình sẽ làm cái gì đây?
+                    //  À mình sẽ gọi cái hàm handleTodoClick này
+                    //  Sau đó, mình sẽ truyền vào thứ 1 là cái todo, thứ 2 là cái index
+                    todoList.map((todo, index) => (
+                        <li
+                            key={todo.id}
+                            className={classnames({
+                                'todo-item': true,
+                                completed: todo.status === 'completed',
+                            })}
+                            onClick={() => handleTodoClick(todo, index)}
+                        >
+                            {todo.title}
+                        </li>
+                    ))
+                }
+            </ul>
+        </>
     );
 }
 
