@@ -9,11 +9,11 @@ function App() {
         <div className="App">
             <Header />
 
-            {/* <Route path="/todos" component={TodoFeature} />
-            <Route path="/albums" component={AlbumFeature} /> */}
+            <Route path="/todos" component={TodoFeature} />
+            <Route path="/albums" component={AlbumFeature} />
 
-            <TodoFeature />
-            <AlbumFeature />
+            {/* <TodoFeature />
+            <AlbumFeature /> */}
         </div>
     );
 }
