@@ -7,6 +7,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import InputField from '../../../../components/form-controls/InputField';
+import PasswordField from '../../../../components/form-controls/PasswordField';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,14 +37,30 @@ function RegisterForm(props) {
     const classes = useStyles();
 
     const schema = yup.object().shape({
-        title: yup.string().required('Please enter title').min(5, 'Too short'),
+        fullName: yup
+            .string()
+            .required('Please enter your full name')
+            .test('should has at least two words', 'Please enter at least two words', (value) => {
+                return value.split(' ').length >= 2; // true || false
+            }),
+
+        email: yup
+            .string()
+            .required('Please enter your email')
+            .email('Please enter a valid email address'),
+
+        password: yup.string().required('Please enter your password').min(6, 'Min 6. Characters'),
+        rePassword: yup
+            .string()
+            .required('Please retype your password')
+            .oneOf([yup.ref('password')], 'Password does not match'),
     });
 
     const { onSubmit } = props;
 
     const form = useForm({
         defaultValues: {
-            fullname: '',
+            fullName: '',
             email: '',
             password: '',
             rePassword: '',
@@ -70,12 +87,18 @@ function RegisterForm(props) {
             </Typography>
 
             <form onSubmit={form.handleSubmit(handleSubmit)}>
-                <InputField name="fullname" label="Full name" form={form} />
+                <InputField name="fullName" label="Full name" form={form} />
                 <InputField name="email" label="Email" form={form} />
-                <InputField name="password" label="Password" form={form} />
-                <InputField name="rePassword" label="Re-Password" form={form} />
+                <PasswordField name="password" label="Password" form={form} />
+                <PasswordField name="rePassword" label="Re-Password" form={form} />
 
-                <Button className={classes.submit} variant="contained" color="primary" fullWidth>
+                <Button
+                    type="submit"
+                    className={classes.submit}
+                    variant="contained"
+                    color="primary"
+                    fullWidth
+                >
                     Create an account
                 </Button>
             </form>
