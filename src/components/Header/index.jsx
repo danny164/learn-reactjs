@@ -1,12 +1,12 @@
+import { IconButton } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { Close } from '@material-ui/icons';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
@@ -25,6 +25,13 @@ const useStyles = makeStyles((theme) => ({
     link: {
         color: '#fff',
         textDecoration: 'none',
+    },
+    closeButton: {
+        position: 'absolute',
+        top: theme.spacing(1),
+        right: theme.spacing(1),
+        color: theme.palette.grey[500],
+        zIndex: 1,
     },
 }));
 
@@ -76,14 +83,12 @@ export default function Header() {
                 onClose={handleClose}
                 aria-labelledby="form-dialog-title"
             >
+                <IconButton className={classes.closeButton} onClick={handleClose}>
+                    <Close />
+                </IconButton>
                 <DialogContent>
                     <Register closeDialog={handleClose} />
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
-                    </Button>
-                </DialogActions>
             </Dialog>
         </div>
     );
